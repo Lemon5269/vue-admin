@@ -10,6 +10,7 @@ import adminDashboard from './admin'
 import editorDashboard from './editor'
 
 export default {
+  // 修改的东西
   name: 'Dashboard',
   components: { adminDashboard, editorDashboard },
   data() {
