@@ -27,16 +27,28 @@ module.exports = {
   publicPath: '/',
   outputDir: 'dist',
   assetsDir: 'static',
-  lintOnSave: process.env.NODE_ENV === 'development',
+  // eslint校验
+  lintOnSave: false, //process.env.NODE_ENV === 'development', //可以设置成false
   productionSourceMap: false,
   devServer: {
     port: port,
-    open: true,
+    open: false, //是否自动打开浏览器，true为自动打开
     overlay: {
       warnings: false,
       errors: true
     },
-    before: require('./mock/mock-server.js')
+    before: require('./mock/mock-server.js'),
+    // 解决跨域问题
+    proxy: { //进行代理
+      [process.env.VUE_APP_BASE_API]:{ //dev-api开头的都会代理转发
+        target: "https://mock.mengxuegu.com/mock/62885e459f8dd47f95c78c2f/vue-admin",
+        changeOrigin: true, //开启代理服务器 /dev-api/test
+        // 代理转发的时候要将/dev-api都去掉
+        pathRewrite:{
+          ['^' + process.env.VUE_APP_BASE_API]: '' //去掉/dev-api
+        }
+      }
+    }
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that

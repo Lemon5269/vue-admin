@@ -1,14 +1,16 @@
 <template>
   <el-row :gutter="40" class="panel-group">
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+      <!--  点击不同的方块，下面的折线图会随着变化    -->
       <div class="card-panel" @click="handleSetLineChartData('newVisitis')">
         <div class="card-panel-icon-wrapper icon-people">
           <svg-icon icon-class="peoples" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            New Visits
+            用户数量
           </div>
+          <!--    这里目前数字是写死的，但是开始到结束的      -->
           <count-to :start-val="0" :end-val="102400" :duration="2600" class="card-panel-num" />
         </div>
       </div>
@@ -57,14 +59,37 @@
 
 <script>
 import CountTo from 'vue-count-to'
+import api from '@/api/user' // 为什么调用不到这个 因为不是默认导出，只能调其中对应的某一个函数
+// import {getUserCount} from "@/api/user";
+// import api from '@api/test'
 
 export default {
   components: {
     CountTo
   },
+  mounted() {
+    this.count()
+  },
   methods: {
     handleSetLineChartData(type) {
       this.$emit('handleSetLineChartData', type)
+    },
+    async count() {
+      // 查询总用户
+      // 这里的async、await是什么意思呢？？这里没有搞懂
+      // 为什么这里只能靠这种方式引入呢
+      const { data: userTotal } = await api.getUserCount()
+      console.log(userTotal)
+      // 为什么这里引不进来呢？？？
+      // uu.getUserCount().then(res => {
+      //   console.log(res);
+      // })
+    },
+    gotest() {
+      console.log('panelGroup')
+      api.getUserCount().then(res => {
+        console.log(res)
+      })
     }
   }
 }

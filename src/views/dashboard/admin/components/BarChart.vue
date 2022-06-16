@@ -3,6 +3,7 @@
 </template>
 
 <script>
+// 已经安装好了echarts
 import echarts from 'echarts'
 require('echarts/theme/macarons') // echarts theme
 import resize from './mixins/resize'
@@ -11,6 +12,7 @@ const animationDuration = 6000
 
 export default {
   mixins: [resize],
+  // props还不是很熟悉，在复习一下
   props: {
     className: {
       type: String,
@@ -47,11 +49,16 @@ export default {
       this.chart = echarts.init(this.$el, 'macarons')
 
       this.chart.setOption({
-        tooltip: {
+        // 这样title就可以显示了！！
+        // title:{
+        //   text: 'Main Title'
+        // },
+        tooltip: { // 提示内容
           trigger: 'axis',
           axisPointer: { // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-          }
+            type: 'line' // 默认为直线，可选为：'line' | 'shadow'
+          },
+          show: true // 是否显示提示框，默认为true
         },
         grid: {
           top: 10,
@@ -60,20 +67,20 @@ export default {
           bottom: '3%',
           containLabel: true
         },
-        xAxis: [{
-          type: 'category',
-          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        xAxis: [{ // x轴
+          type: 'category', // 这个值是固定的
+          data: ['Mon1', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
           axisTick: {
             alignWithLabel: true
           }
         }],
-        yAxis: [{
+        yAxis: [{ // y轴
           type: 'value',
           axisTick: {
             show: false
           }
         }],
-        series: [{
+        series: [{ // 序列，柱值
           name: 'pageA',
           type: 'bar',
           stack: 'vistors',

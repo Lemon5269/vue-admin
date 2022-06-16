@@ -22,3 +22,14 @@ export function logout() {
     method: 'post'
   })
 }
+
+export default {
+
+  getUserCount() {
+    return request({
+      url: '/system/user/total',
+      method: 'get'
+    })
+  }
+
+}

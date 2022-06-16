@@ -57,14 +57,21 @@ export default {
     this.chart = null
   },
   methods: {
+    timeAdd0(str) {
+      if (str.length <= 1) {
+        str = '0' + str
+      }
+      return str
+    },
     initChart() {
       this.chart = echarts.init(this.$el, 'macarons')
       this.setOptions(this.chartData)
     },
-    setOptions({ expectedData, actualData } = {}) {
+    // 如何画出三条线呢？？？
+    setOptions({ time, value, value2 } = {}) {
       this.chart.setOption({
         xAxis: {
-          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          data: time,
           boundaryGap: false,
           axisTick: {
             show: false
@@ -89,11 +96,12 @@ export default {
             show: false
           }
         },
+        // 这里是图例
         legend: {
-          data: ['expected', 'actual']
+          data: ['value', 'value2']
         },
         series: [{
-          name: 'expected', itemStyle: {
+          name: 'value', itemStyle: {
             normal: {
               color: '#FF005A',
               lineStyle: {
@@ -104,30 +112,27 @@ export default {
           },
           smooth: true,
           type: 'line',
-          data: expectedData,
+          data: value,
           animationDuration: 2800,
           animationEasing: 'cubicInOut'
         },
         {
-          name: 'actual',
-          smooth: true,
-          type: 'line',
-          itemStyle: {
+          name: 'value2', itemStyle: {
             normal: {
               color: '#3888fa',
               lineStyle: {
                 color: '#3888fa',
                 width: 2
-              },
-              areaStyle: {
-                color: '#f3f8ff'
               }
             }
           },
-          data: actualData,
+          smooth: true,
+          type: 'line',
+          data: value2,
           animationDuration: 2800,
-          animationEasing: 'quadraticOut'
-        }]
+          animationEasing: 'cubicInOut'
+        }
+        ]
       })
     }
   }

@@ -1,27 +1,59 @@
 <template>
   <el-table :data="list" style="width: 100%;padding-top: 15px;">
-    <el-table-column label="Order_No" min-width="200">
+    <el-table-column label="fingerprint" width="300px">
       <template slot-scope="scope">
-        {{ scope.row.order_no | orderNoFilter }}
+        {{ scope.row.fingerprint }}
       </template>
     </el-table-column>
-    <el-table-column label="Price" width="195" align="center">
+    <el-table-column label="address">
       <template slot-scope="scope">
-        ¥{{ scope.row.price | toThousandFilter }}
+        {{ scope.row.address }}
       </template>
     </el-table-column>
-    <el-table-column label="Status" width="100" align="center">
-      <template slot-scope="{row}">
-        <el-tag :type="row.status | statusFilter">
-          {{ row.status }}
-        </el-tag>
+    <el-table-column label="contactLine">
+      <template slot-scope="scope">
+        {{ scope.row.contactLine }}
       </template>
     </el-table-column>
+    <el-table-column label="publishedMillis">
+      <template slot-scope="scope">
+        {{ scope.row.publishedMillis }}
+      </template>
+    </el-table-column>
+    <el-table-column label="nickname">
+      <template slot-scope="scope">
+        {{ scope.row.nickname }}
+      </template>
+    </el-table-column>
+    <el-table-column label="hostname">
+      <template slot-scope="scope">
+        {{ scope.row.hostname }}
+      </template>
+    </el-table-column>
+    <el-table-column label="dirPort">
+      <template slot-scope="scope">
+        {{ scope.row.dirPort }}
+      </template>
+    </el-table-column>
+    <el-table-column label="contactLine">
+      <template slot-scope="scope">
+        {{ scope.row.contactLine }}
+      </template>
+    </el-table-column>
+    <!--    <el-table-column label="publishedMillis" width="100" align="center">-->
+    <!--      <template slot-scope="{row}">-->
+    <!--&lt;!&ndash;        <el-tag :type="row.status | statusFilter">&ndash;&gt;-->
+    <!--&lt;!&ndash;          {{ row.status }}&ndash;&gt;-->
+    <!--&lt;!&ndash;        </el-tag>&ndash;&gt;-->
+    <!--        {{ scope.row.publishedMillis | toThousandFilter }}-->
+    <!--      </template>-->
+    <!--    </el-table-column>-->
   </el-table>
 </template>
 
 <script>
 import { transactionList } from '@/api/remote-search'
+import api from '@/api/test'
 
 export default {
   filters: {
@@ -46,8 +78,10 @@ export default {
   },
   methods: {
     fetchData() {
-      transactionList().then(response => {
-        this.list = response.data.items.slice(0, 8)
+      api.status().then(res => {
+        // console.log(1111111111111,res);
+        this.list = res.data.records
+        console.log(111111111111, this.list)
       })
     }
   }

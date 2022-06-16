@@ -5,12 +5,13 @@ import { getToken } from '@/utils/auth'
 
 // create an axios instance
 const service = axios.create({
+  // 这里和我们配置的地址是一样的，调用接口时不需要再加上/dev-api
   baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
   timeout: 5000 // request timeout
 })
 
-// request interceptor
+// request interceptor 请求拦截器
 service.interceptors.request.use(
   config => {
     // do something before request is sent
@@ -30,7 +31,7 @@ service.interceptors.request.use(
   }
 )
 
-// response interceptor
+// response interceptor 响应拦截器
 service.interceptors.response.use(
   /**
    * If you want to get http information such as headers or status
@@ -45,6 +46,7 @@ service.interceptors.response.use(
   response => {
     const res = response.data
 
+    // 这里要求了数据格式
     // if the custom code is not 20000, it is judged as an error.
     if (res.code !== 20000) {
       Message({
@@ -53,6 +55,7 @@ service.interceptors.response.use(
         duration: 5 * 1000
       })
 
+      // 50008、50012、50014分别都有不同的意义
       // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
       if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
         // to re-login
@@ -71,7 +74,7 @@ service.interceptors.response.use(
       return res
     }
   },
-  error => {
+  error => { // 错误拦截
     console.log('err' + error) // for debug
     Message({
       message: error.message,

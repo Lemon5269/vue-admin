@@ -53,6 +53,7 @@ export default {
   },
   computed: {
     ...mapGetters([
+      // 用户姓名、头像、角色都是依靠vuex进行存储的
       'name',
       'avatar',
       'roles'
