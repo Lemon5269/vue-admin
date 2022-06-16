@@ -24,32 +24,32 @@
     <!--    </el-table>-->
 
     <el-table :data="tableData" style="width: 100%;padding-top: 15px;">
-      <el-table-column label="getIpv4" width="300px">
+      <el-table-column label="bandwidthFileId" width="300px">
         <template slot-scope="scope">
-          {{ scope.row.getIpv4 }}
+          {{ scope.row.bandwidthFileId}}
         </template>
       </el-table-column>
 
-      <el-table-column label="geoCountty" width="300px">
+      <el-table-column label="bw" width="300px">
         <template slot-scope="scope">
-          {{ scope.row.geoCountty }}
+          {{ scope.row.bw }}
         </template>
       </el-table-column>
-      <el-table-column label="geoCity" width="300px">
+      <el-table-column label="bwMean" width="300px">
         <template slot-scope="scope">
-          {{ scope.row.geoCity }}
-        </template>
-      </el-table-column>
-
-      <el-table-column label="geoAsn" width="300px">
-        <template slot-scope="scope">
-          {{ scope.row.geoAsn }}
+          {{ scope.row.bwMean }}
         </template>
       </el-table-column>
 
-      <el-table-column label="placetypes" width="300px">
+      <el-table-column label="bwMedian" width="300px">
         <template slot-scope="scope">
-          {{ scope.row.placetypes }}
+          {{ scope.row.bwMedian }}
+        </template>
+      </el-table-column>
+
+      <el-table-column label="consensusBandwidth" width="300px">
+        <template slot-scope="scope">
+          {{ scope.row.consensusBandwidth }}
         </template>
       </el-table-column>
     </el-table>
@@ -93,10 +93,10 @@
     },
     methods: {
       fetchData() {
-        api.getLinkData().then(res => {
+        api.getNSE().then(res => {
           // console.log(1111111111111,res);
-          this.tableData = res.data
-          console.log(111111111111, this.list)
+          this.tableData = res.data.records;
+          console.log(111111111111, this.tableData)
         })
       }
     }

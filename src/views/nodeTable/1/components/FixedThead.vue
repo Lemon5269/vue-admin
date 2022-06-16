@@ -24,32 +24,32 @@
     <!--    </el-table>-->
 
     <el-table :data="tableData" style="width: 100%;padding-top: 15px;">
-      <el-table-column label="id" width="300px">
-        <template slot-scope="scope">
-          {{ scope.row.id }}
-        </template>
-      </el-table-column>
-
-      <el-table-column label="nickname" width="300px">
-        <template slot-scope="scope">
-          {{ scope.row.nickname }}
-        </template>
-      </el-table-column>
-      <el-table-column label="fingerprint" width="300px">
-        <template slot-scope="scope">
-          {{ scope.row.fingerprint }}
-        </template>
-      </el-table-column>
-
       <el-table-column label="address" width="300px">
         <template slot-scope="scope">
           {{ scope.row.address }}
         </template>
       </el-table-column>
 
-      <el-table-column label="version" width="300px">
+      <el-table-column label="bandwidth" width="300px">
         <template slot-scope="scope">
-          {{ scope.row.version }}
+          {{ scope.row.bandwidth }}
+        </template>
+      </el-table-column>
+      <el-table-column label="consensusId" width="300px">
+        <template slot-scope="scope">
+          {{ scope.row.consensusId }}
+        </template>
+      </el-table-column>
+
+      <el-table-column label="defaultPolicy" width="300px">
+        <template slot-scope="scope">
+          {{ scope.row.defaultPolicy }}
+        </template>
+      </el-table-column>
+
+      <el-table-column label="descriptor" width="300px">
+        <template slot-scope="scope">
+          {{ scope.row.descriptor }}
         </template>
       </el-table-column>
     </el-table>
@@ -93,9 +93,9 @@
     },
     methods: {
       fetchData() {
-        api.getLinkData().then(res => {
+        api.getNSE().then(res => {
           // console.log(1111111111111,res);
-          this.tableData = res.data
+          this.tableData = res.data.records;
           console.log(111111111111, this.tableData)
         })
       }

@@ -41,7 +41,7 @@ module.exports = {
     // 解决跨域问题
     proxy: { //进行代理
       [process.env.VUE_APP_BASE_API]:{ //dev-api开头的都会代理转发
-        target: "https://mock.mengxuegu.com/mock/62885e459f8dd47f95c78c2f/vue-admin",
+        target: "http://mockjs.xiaoyaoji.cn/mock/1pXRkxW9hnU",
         changeOrigin: true, //开启代理服务器 /dev-api/test
         // 代理转发的时候要将/dev-api都去掉
         pathRewrite:{

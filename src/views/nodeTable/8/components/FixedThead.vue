@@ -24,32 +24,32 @@
     <!--    </el-table>-->
 
     <el-table :data="tableData" style="width: 100%;padding-top: 15px;">
-      <el-table-column label="getIpv4" width="300px">
+      <el-table-column label="bridgeIpTransports" width="300px">
         <template slot-scope="scope">
-          {{ scope.row.getIpv4 }}
+          {{ scope.row.bridgeIpTransports }}
         </template>
       </el-table-column>
 
-      <el-table-column label="geoCountty" width="300px">
+      <el-table-column label="bridgeIpVersions" width="300px">
         <template slot-scope="scope">
-          {{ scope.row.geoCountty }}
+          {{ scope.row.bridgeIpVersions }}
         </template>
       </el-table-column>
-      <el-table-column label="geoCity" width="300px">
+      <el-table-column label="bridgeIps" width="300px">
         <template slot-scope="scope">
-          {{ scope.row.geoCity }}
-        </template>
-      </el-table-column>
-
-      <el-table-column label="geoAsn" width="300px">
-        <template slot-scope="scope">
-          {{ scope.row.geoAsn }}
+          {{ scope.row.bridgeIps }}
         </template>
       </el-table-column>
 
-      <el-table-column label="placetypes" width="300px">
+      <el-table-column label="bridgeStatsEndMillis" width="300px">
         <template slot-scope="scope">
-          {{ scope.row.placetypes }}
+          {{ scope.row.bridgeStatsEndMillis }}
+        </template>
+      </el-table-column>
+
+      <el-table-column label="cellCircuitsPerDecile" width="300px">
+        <template slot-scope="scope">
+          {{ scope.row.cellCircuitsPerDecile }}
         </template>
       </el-table-column>
     </el-table>
