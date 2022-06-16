@@ -9,8 +9,8 @@
     <!--  注意vue框架中使用enter回车要加入这个native  -->
     <!--  按下回车键可以弹出一个列表，找到对应的内容  -->
     <div>
-      <el-input placeholder="请输入name" style="width: 200px; margin-right: 10px;" class="filter-item" @keyup.enter.native="handleFilter" />
-      <el-input placeholder="请输入address" style="width: 200px; margin-right: 10px;" class="filter-item" @keyup.enter.native="handleFilter" />
+      <el-input v-model="name" placeholder="请输入name" style="width: 200px; margin-right: 10px;" class="filter-item" @keyup.enter.native="handleFilter" />
+      <el-input v-model="address" placeholder="请输入address" style="width: 200px; margin-right: 10px;" class="filter-item" @keyup.enter.native="handleFilter" />
 
       <el-date-picker
         v-model="dateValue"
@@ -247,6 +247,8 @@ export default {
         time: [],
         value: []
       },
+      name: '',
+      address: '',
 
       // 分页，其实不用定义也可以把
       currentPage: 0,
@@ -288,7 +290,12 @@ export default {
     handleFilter() {
       // 1.请求接口，拿到需要查询的东西（时间是必选）
       // 能拿到数据
-      api.getAllData().then(res => {
+      var data = {
+        name: this.name,
+        address: this.address,
+        date: this.dateValue
+      }
+      api.getAllData(data).then(res => {
         // 分页
         this.total = res.data.total
         this.currentPage = res.data.current

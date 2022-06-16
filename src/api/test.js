@@ -9,10 +9,11 @@ export default {
       method: 'get'
     })
   },
-  getAllData() {
+  getAllData(data) {
     return request({ // return 回去的是一个promise对象
       url: '/getAllData', // request.js中已经配置好了会自动加上/dev-api，然后会被vue.config.js里的代理配置拦截到
-      method: 'get'
+      method: 'get',
+      params: data
     })
   },
   status() {
