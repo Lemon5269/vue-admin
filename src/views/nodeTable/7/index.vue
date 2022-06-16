@@ -17,7 +17,7 @@ import FixedThead from './components/FixedThead'
 import UnfixedThead from './components/UnfixedThead'
 
 export default {
-  name: 'LinkRecommand',
+  name: '7',
   components: { FixedThead, UnfixedThead }
 }
 </script>

@@ -52,7 +52,7 @@
     <!--    </el-input>-->
 
     <!--  首页上四块  -->
-    <panel-group @handleSetLineChartData="handleSetLineChartData" />
+<!--    <panel-group @handleSetLineChartData="handleSetLineChartData" />-->
 
     <el-row :gutter="8">
       <!--   这里可以展示用户登录的信息   -->
@@ -80,23 +80,23 @@
     <!--    </el-row>-->
 
     <!-- 三个小图，不知道能展示点什么东西   -->
-    <el-row :gutter="32">
-      <el-col :xs="24" :sm="24" :lg="8">
-        <div class="chart-wrapper">
-          <raddar-chart />
-        </div>
-      </el-col>
-      <el-col :xs="24" :sm="24" :lg="8">
-        <div class="chart-wrapper">
-          <pie-chart />
-        </div>
-      </el-col>
-      <el-col :xs="24" :sm="24" :lg="8">
-        <div class="chart-wrapper">
-          <bar-chart />
-        </div>
-      </el-col>
-    </el-row>
+<!--    <el-row :gutter="32">-->
+<!--      <el-col :xs="24" :sm="24" :lg="8">-->
+<!--        <div class="chart-wrapper">-->
+<!--          <raddar-chart />-->
+<!--        </div>-->
+<!--      </el-col>-->
+<!--      <el-col :xs="24" :sm="24" :lg="8">-->
+<!--        <div class="chart-wrapper">-->
+<!--          <pie-chart />-->
+<!--        </div>-->
+<!--      </el-col>-->
+<!--      <el-col :xs="24" :sm="24" :lg="8">-->
+<!--        <div class="chart-wrapper">-->
+<!--          <bar-chart />-->
+<!--        </div>-->
+<!--      </el-col>-->
+<!--    </el-row>-->
 
     <!--  可以通过gutter属性来设置方格之间的距离  -->
     <!--    <el-row :gutter="8">-->

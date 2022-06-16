@@ -24,32 +24,32 @@
     <!--    </el-table>-->
 
     <el-table :data="tableData" style="width: 100%;padding-top: 15px;">
-      <el-table-column label="getIpv4" width="300px">
+      <el-table-column label="id" width="300px">
         <template slot-scope="scope">
-          {{ scope.row.getIpv4 }}
+          {{ scope.row.id }}
         </template>
       </el-table-column>
 
-      <el-table-column label="geoCountty" width="300px">
+      <el-table-column label="nickname" width="300px">
         <template slot-scope="scope">
-          {{ scope.row.geoCountty }}
+          {{ scope.row.nickname }}
         </template>
       </el-table-column>
-      <el-table-column label="geoCity" width="300px">
+      <el-table-column label="fingerprint" width="300px">
         <template slot-scope="scope">
-          {{ scope.row.geoCity }}
-        </template>
-      </el-table-column>
-
-      <el-table-column label="geoAsn" width="300px">
-        <template slot-scope="scope">
-          {{ scope.row.geoAsn }}
+          {{ scope.row.fingerprint }}
         </template>
       </el-table-column>
 
-      <el-table-column label="placetypes" width="300px">
+      <el-table-column label="address" width="300px">
         <template slot-scope="scope">
-          {{ scope.row.placetypes }}
+          {{ scope.row.address }}
+        </template>
+      </el-table-column>
+
+      <el-table-column label="version" width="300px">
+        <template slot-scope="scope">
+          {{ scope.row.version }}
         </template>
       </el-table-column>
     </el-table>
@@ -96,7 +96,7 @@
         api.getLinkData().then(res => {
           // console.log(1111111111111,res);
           this.tableData = res.data
-          console.log(111111111111, this.list)
+          console.log(111111111111, this.tableData)
         })
       }
     }

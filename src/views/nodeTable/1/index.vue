@@ -17,7 +17,7 @@ import FixedThead from './components/FixedThead'
 import UnfixedThead from './components/UnfixedThead'
 
 export default {
-  name: 'LinkRecommand',
+  name: 'status_network_status_entry',
   components: { FixedThead, UnfixedThead }
 }
 </script>
